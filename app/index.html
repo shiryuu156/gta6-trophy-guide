@@ -3,23 +3,103 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
+<title>Leonida Trophy Guide — GTA VI, all 55 trophies</title>
+<meta name="description" content="An offline guide and tracker for all 55 Grand Theft Auto VI trophies on PlayStation 5: cited guides, a platinum roadmap, missable flags, spoiler masks and a progress tracker.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header class="site-header">
+  <div class="header-inner">
+    <div>
+      <h1>Leonida Trophy Guide</h1>
+      <p class="subtitle">Grand Theft Auto VI &middot; PlayStation 5 &middot; all 55 trophies &middot; offline guide &amp; tracker</p>
+    </div>
+    <div class="platinum-box" id="platinumBox" title="Platinum progress">
+      <span class="platinum-label">PLATINUM</span>
+      <span class="platinum-count" id="platinumCount">0 / 55</span>
+      <span class="platinum-pct" id="platinumPct">0%</span>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="tier-counts" id="tierCounts"></div>
+  </div>
+  <nav class="tabs" aria-label="Guide sections">
+    <button type="button" class="tab active" data-view="trophies">Trophies</button>
+    <button type="button" class="tab" data-view="roadmap">Roadmap to Platinum</button>
+    <button type="button" class="tab" data-view="about">About &amp; Sources</button>
+  </nav>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
+
+<main>
+  <section id="view-trophies" class="view active">
+    <div class="controls">
+      <div class="controls-row">
+        <label class="search-label">Search <input id="search" type="search" placeholder="Trophy name or keyword&hellip;" autocomplete="off"></label>
+        <label>Grade <select id="gradeFilter"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
+        <label>Kind <select id="kindFilter"><option value="all">All</option><option value="story">Story</option><option value="side">Side missions</option><option value="collectible">Collectibles</option><option value="activity">Activities</option><option value="robbery">Robberies</option><option value="completion">100% completion</option><option value="misc">Miscellaneous</option><option value="platinum">Platinum</option></select></label>
+        <label>Difficulty <select id="difficultyFilter"><option value="all">Any</option><option value="1">1 &middot; Easy</option><option value="2">2 &middot; Moderate</option><option value="3">3 &middot; Hard</option><option value="4">4 &middot; Very hard</option></select></label>
+        <label>Status <select id="statusFilter"><option value="all">All</option><option value="earned">Earned</option><option value="unearned">Unearned</option></select></label>
+      </div>
+      <div class="controls-row">
+        <label class="check-label"><input id="missableOnly" type="checkbox"> Missable only</label>
+        <label class="check-label"><input id="spoilerToggle" type="checkbox" checked> Spoiler masks on <span class="hint">(hides hidden trophies)</span></label>
+        <span class="spacer"></span>
+        <button id="exportBtn" type="button">Export progress</button>
+        <label class="import-btn">Import progress <input id="importFile" type="file" accept="application/json,.json"></label>
+        <button id="shareBtn" type="button">Copy share link</button>
+        <button id="resetBtn" type="button" class="danger">Reset progress</button>
+      </div>
+    </div>
+    <p class="result-line" id="resultLine"></p>
+    <div class="trophy-list" id="trophyList"></div>
+  </section>
+
+  <section id="view-roadmap" class="view">
+    <div class="roadmap-intro">
+      <h2>Roadmap to the Platinum</h2>
+      <p id="roadmapSummary"></p>
+      <div class="warning-box" id="roadmapWarnings"></div>
+    </div>
+    <div class="phases" id="phases"></div>
+    <p class="source-line" id="roadmapSources"></p>
+  </section>
+
+  <section id="view-about" class="view">
+    <h2>About this guide</h2>
+    <p>This guide covers the official PlayStation 5 trophy list for Grand Theft Auto VI: 55 trophies — 1 platinum, 2 gold, 6 silver and 46 bronze — of which 28 are hidden on PlayStation until earned. Every trophy's name, description and grade are shown as PlayStation publishes them. Every guide is written in our own words for this entry, and each one names the published guides its facts come from, so you can check any claim. Where the guides disagree or a method is still unconfirmed, the guide says so instead of guessing.</p>
+    <h3>How to use the tracker</h3>
+    <ul>
+      <li>Tick a trophy's box when you earn it. Progress is saved in your browser (localStorage) and survives closing the page.</li>
+      <li>Export progress downloads a JSON file; Import progress reads one back. The share link encodes your progress in the page address, so you can send it to another device.</li>
+      <li>Spoiler masks hide the names and descriptions of the 28 hidden story trophies until you earn them or reveal them one by one. Turn the masks off to see the whole list.</li>
+      <li>Filters narrow the list by grade, kind, difficulty, status and missable flag; search matches names, descriptions and guide text.</li>
+      <li>The whole guide works with the network off: it is plain files, and nothing is fetched at run time except its own data files.</li>
+    </ul>
+    <h3>Sources</h3>
+    <p>Each trophy's guide names its sources beside it. The main references for this guide are:</p>
+    <ul class="source-list">
+      <li><a href="https://www.powerpyx.com/gta-6-grand-theft-auto-vi-trophy-guide-roadmap/">PowerPyx — GTA 6 Trophy Guide &amp; Roadmap</a> (difficulty 4/10, about 200 hours, roadmap steps, the missable meditation)</li>
+      <li><a href="https://www.pushsquare.com/guides/gta-6-trophy-guide-and-roadmap">Push Square — GTA 6 Trophy Guide &amp; Roadmap</a> (story flow, 100% checklist, shop locations)</li>
+      <li><a href="https://www.keengamer.com/articles/guides/gta-6-trophy-guide-platinum-roadmap-all-55-trophies/">KeenGamer — GTA 6 Trophy Guide &amp; Platinum Roadmap</a> (roadmap detail, individual trophy methods)</li>
+      <li><a href="https://egamers.io/gta-6-trophy-list-all-55-trophies-and-achievements-plus-the-hardest-ones/">EGamers — GTA 6 Trophy List</a> (hidden list, GTABase tips, checklist comparisons)</li>
+      <li><a href="https://gtaspotter.com/en/guides/gta-6-trophies-and-achievements/">GTASpotter — GTA VI trophies and achievements</a> (roadmap summary, character-only questlines)</li>
+      <li><a href="https://gta-zone.com/news/gta-6-trophies-achievements/">GTA Zone — GTA 6 Trophies &amp; Achievements</a> (roadmap times, checklist thresholds)</li>
+      <li><a href="https://www.vicecityhustle.com/guides/gta-6-trophy-list-all-55-trophies">Vice City Hustle — GTA 6 Trophy List</a> (meditation spots, roadmap)</li>
+      <li><a href="https://gamerblurb.com/articles/gta-6-achievements-guide">GamerBlurb — GTA 6 Achievements Guide</a> (achievement order, unconfirmed entries)</li>
+      <li><a href="https://www.ofzenandcomputing.com/gta-6-trophy-list-trophies-achievements/">Of Zen and Computing — GTA 6 Trophy List</a> (hidden trophies, roadmap order)</li>
+      <li><a href="https://bloxodes.com/wiki/gta-6/achievements-and-trophies">Bloxodes — GTA 6 Achievements and Trophies</a> (Criminal Profile tracking)</li>
+      <li><a href="https://leonidainteractive.com/wiki/guides/trophies-achievements/">Leonida Interactive — GTA 6 Trophies and Achievements</a> (hidden and special trophies)</li>
+      <li><a href="https://insider-gaming.com/complete-gta-6-trophy-list-how-to-get-all-trophies-achievements/">Insider Gaming — Complete GTA 6 Trophy List</a> (visible and hidden lists)</li>
+    </ul>
+    <p class="fine-print">Trophy names, descriptions and grades are the official list as published by PSNProfiles and Exophase. This is an unofficial fan-made guide, not affiliated with Rockstar Games, Take-Two Interactive or PlayStation. No Rockstar logo, official artwork or game screenshot is used anywhere in this guide.</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>Leonida Trophy Guide &middot; 55 trophies &middot; works offline &middot; progress stays in your browser</p>
+</footer>
+
 <script type="module" src="app.js"></script>
 </body>
 </html>

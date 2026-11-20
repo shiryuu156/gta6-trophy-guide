@@ -1,5 +1,1 @@
-[
-  { "file": "1-checklist.jpg", "path": "/", "viewport": { "width": 1280, "height": 800 } },
-  { "file": "2-silver.jpg", "path": "/", "grade": "silver", "viewport": { "width": 1280, "height": 800 } },
-  { "file": "3-bronze.jpg", "path": "/", "grade": "bronze", "scroll": 1400, "viewport": { "width": 1280, "height": 800 } }
-]
+[{"file":"1-guide-open.jpg","note":"Cover: checklist with progress, filters and the platinum guide open with its steps and sources.","path":"/?earned=2,3,8,16,53&open=1","viewport":{"height":800,"width":1280}},{"file":"2-roadmap.jpg","note":"Roadmap to the Platinum: three phases, warnings and phase trophy chips.","path":"/?view=roadmap&earned=2,3,8,16,53","viewport":{"height":800,"width":1280}},{"file":"3-spoiler-masks.jpg","note":"Spoiler masks at work: hidden story trophies masked until earned, with reveal buttons.","path":"/?kind=story&earned=2,3,8,16,53","viewport":{"height":800,"width":1280}},{"file":"4-missable.jpg","note":"Missable filter: Positive Mental Attitude with its full guide open, flagged Missable.","path":"/?missable=1&open=28&spoiler=off","viewport":{"height":800,"width":1280}}]
